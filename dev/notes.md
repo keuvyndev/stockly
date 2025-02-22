@@ -43,3 +43,4 @@
   - npx prisma format
   - npx prisma migrate dev --name init
   - npx prisma studio
+  - npx prisma db push (Caso suba um container no docker, migrará os dados)
