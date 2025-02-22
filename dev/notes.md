@@ -33,6 +33,13 @@
 
 - npx shadcn@2.0.6 init (Default/Slate)
   - npx shadcn@2.0.6 add button
+    - npx shadcn@2.0.6 add table
+    - npm install @tanstack/react-table
+  - npx shadcn@2.0.6 add badge
+- server-only (Resolve o problema de server actions não serem executadas em clienct components)
+
+  - npm install server-only@0.0.1
+
 - ## Docker
 - ## Postgres
 - Prisma & ORMS
@@ -44,3 +51,4 @@
   - npx prisma migrate dev --name init
   - npx prisma studio
   - npx prisma db push (Caso suba um container no docker, migrará os dados)
+  - npx prisma generate
