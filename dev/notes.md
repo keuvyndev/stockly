@@ -25,9 +25,18 @@
 
 - Guia de instalação da Inter Font: [inter-font-guide](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts).
 
-## NewHooks
+## News Next.js
 
 - usePathName: Permite obter a url atual.
+- Router Handler: Permite fazer requisições utilizando a rota. [Acesse a documentação aqui.](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+- Criar rotas HTTP, só faz sentido quando:
+  1. Quando está trabalhando com algum Webhook (Exemplo: Integrando com Stripe, que precisa chamar uma rota da sua aplicação após o pagamento ser realizado com sucesso ou com falha)
+  2. Quando você tem outra aplicação (Exemplo: Exportar dados da sua aplicação para um app mobile)
+     Obs: As rotas não podem ter o retorno tipado, por isso a preferencia é sempre usar Server Components para tal.
+
+## Tips
+
+- Fix problema Decimal with prisma: JSON.parse(JSON.stringify(variabel))
 
 ### Dependências
 
