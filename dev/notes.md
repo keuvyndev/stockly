@@ -33,3 +33,13 @@
 
 - npx shadcn@2.0.6 init (Default/Slate)
   - npx shadcn@2.0.6 add button
+- ## Docker
+- ## Postgres
+- Prisma & ORMS
+  - npm install prisma
+  - npx prisma init
+  - Criação do banco de dados (Cloud ou Docker)
+  - Criação do schema
+  - npx prisma format
+  - npx prisma migrate dev --name init
+  - npx prisma studio
