@@ -4,12 +4,25 @@ import { DataTable } from "../_components/ui/data-table";
 import { productsTableColumns } from "./_components/tableColumns";
 import { getProducts } from "../_data-access/product/getProducts";
 
+// Força o comportamento SSR no Database Caching
+//export const dynamic = "force-dynamic";
+
 const ProductsPage = async () => {
+  // Consulta no método Database Caching
   const products = await getProducts();
 
-  /* MODELO DE CONSULTA VIA API COM ROUTE HANDLER
-  const response = await fetch("http://localhost:3000/api/products");
-  const products = await response.json()
+  /*
+    // CONSULTA NO MÉTODO DATABASE CACHING COM ISR
+    const products = await cachedGetProducts();
+  */
+
+  /*
+    // MODELO DE CONSULTA VIA API COM ROUTE HANDLER (FETCH)
+    const response = await fetch("http://localhost:3000/api/products", {
+      method: "GET",
+      cache: "no-cache", // Define se será SSR ou STATIC
+    });
+    const { products } = await response.json();
   */
 
   return (

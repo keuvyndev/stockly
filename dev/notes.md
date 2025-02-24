@@ -33,6 +33,50 @@
   1. Quando está trabalhando com algum Webhook (Exemplo: Integrando com Stripe, que precisa chamar uma rota da sua aplicação após o pagamento ser realizado com sucesso ou com falha)
   2. Quando você tem outra aplicação (Exemplo: Exportar dados da sua aplicação para um app mobile)
      Obs: As rotas não podem ter o retorno tipado, por isso a preferencia é sempre usar Server Components para tal.
+- Uso de fetch no Next.js podem ser realizadas com Static, ISR ou SSR (Só funciona em Server Componente). tal como:
+  - Exemplo de fetch com SSR:
+    const response = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    cache: "no-cache", // Define se será SSR ou STATIC
+    });
+  - Exemplo de ISR com fetch:
+    const responseWithISR = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    next: {
+    revalidate: 5,
+    },
+    });
+  - Exemplo de ISR duplo com fetch:
+    const responseWithISR = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    next: {
+    revalidate: 5,
+    },
+    });
+    const responseWithISR2 = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+    next: {
+    revalidate: 10,
+    },
+    });
+    Obs: Não é possível usar STATIC e ISR ao mesmo tempo no mesmo componente.
+- OBS: Se usar fetch com static, para buildar a aplicação é necessário que o ambiente de desenvolvimento esteja rodando!
+- OBS2: Por padrão o next renderizará as páginas como STATIC.
+- É possível alterar o "next.config" para :
+  const nextConfig = {
+  logging: {
+  fetches: {
+  fullUrl: true,
+  },
+  },
+  };
+  Isto permite que ele mostre as requisições mais detalhadas no terminal.
+- Request Memoization: é um recurso que otimiza requisições em aplicações, especialmente quando se está utilizando Server Components. A ideia principal é evitar chamadas duplicadas para a mesma URL e com os mesmos parâmetros.
+- A idéia é usar sempre que possível Server Components, e a partir deles usar Client Components
+- Tanto no método de Data Caching ou de Route Handler (Fetch), é possível configurar a consulta para ser realizada com ISR, ou SSR (Cache/no-cache)
+- export const dynamic = "force-dynamic"; // Força o comportamento SSR no Database Caching
+- unstable_cache: Permite usar o modelo ISR com consultas Database Caching
+- OBS: Se usar "cookies()" ou "headers()" a pagina é definida automaticamente como SSR.
 
 ## Tips
 
