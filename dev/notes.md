@@ -100,6 +100,7 @@
   - npx shadcn@2.0.6 add badge
   - npx shadcn@2.0.6 add input
   - npx shadcn@2.0.6 add form
+  - npx shadcn@2.0.6 add dropdown-menu
   - npm install react-number-format@5.4.2
 
 - server-only (Resolve o problema de server actions não serem executadas em clienct components)
