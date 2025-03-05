@@ -61,8 +61,7 @@
     });
     Obs: Não é possível usar STATIC e ISR ao mesmo tempo no mesmo componente.
 - OBS: Se usar fetch com static, para buildar a aplicação é necessário que o ambiente de desenvolvimento esteja rodando!
-- OBS2: Por padrão o next renderizará as páginas como STATIC.
-- É possível alterar o "next.config" para :
+- OBS2: Por padrão ra :
   const nextConfig = {
   logging: {
   fetches: {
@@ -71,12 +70,20 @@
   },
   };
   Isto permite que ele mostre as requisições mais detalhadas no terminal.
-- Request Memoization: é um recurso que otimiza requisições em aplicações, especialmente quando se está utilizando Server Components. A ideia principal é evitar chamadas duplicadas para a mesma URL e com os mesmos parâmetros.
+- Request Memoization: é um ro next renderizará as páginas em desenvolvimento como SSR, já em produção como STATIC.
+- É possível alterar o "next.config" paecurso que otimiza requisições em aplicações, especialmente quando se está utilizando Server Components. A ideia principal é evitar chamadas duplicadas para a mesma URL e com os mesmos parâmetros.
+- Function memoization: é uma técnica que permite armazenar os resultados de chamadas de funções para que, quando a mesma função for chamada novamente com os mesmos parâmetros, o resultado já armazenado possa ser retornado, em vez de recalcular o resultado. Isso melhora a eficiência e reduz o tempo de execução, especialmente em funções que realizam operações pesadas ou chamadas a bancos de dados.
+- "cache({function})": Permite memorizar o resultado de qualquer função, seu uso é muito comum em banco de dados.
 - A idéia é usar sempre que possível Server Components, e a partir deles usar Client Components
 - Tanto no método de Data Caching ou de Route Handler (Fetch), é possível configurar a consulta para ser realizada com ISR, ou SSR (Cache/no-cache)
-- export const dynamic = "force-dynamic"; // Força o comportamento SSR no Database Caching
+- SSR force na página: É possível forçar o uso de SSR usando o comando abaixo desde que seja página (pagina.tsx). Basta inserir o comando abaixo:
+  - export const dynamic = "force-dynamic"; // Força o comportamento SSR no Database Caching
 - unstable_cache: Permite usar o modelo ISR com consultas Database Caching
 - OBS: Se usar "cookies()" ou "headers()" a pagina é definida automaticamente como SSR.
+- ISR na página: É possível usar desde que seja uma página (page.tsx) e seja STATIC. Basta inserir o comando abaixo:
+  - export const revalidate = 10
+- Server Actions: São funções assíncronas que são executadas no servidor. Podem ser chamados em client e server components para lhe dar com envio de formulários e mutação de dados.
+  - As rotinas devem ser colocadas dentro de "\_actions"
 
 ## Tips
 
@@ -85,10 +92,16 @@
 ### Dependências
 
 - npx shadcn@2.0.6 init (Default/Slate)
+
   - npx shadcn@2.0.6 add button
     - npx shadcn@2.0.6 add table
     - npm install @tanstack/react-table
+  - npx shadcn@2.0.6 add dialog
   - npx shadcn@2.0.6 add badge
+  - npx shadcn@2.0.6 add input
+  - npx shadcn@2.0.6 add form
+  - npm install react-number-format@5.4.2
+
 - server-only (Resolve o problema de server actions não serem executadas em clienct components)
 
   - npm install server-only@0.0.1

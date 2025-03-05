@@ -33,11 +33,11 @@ export const productsTableColumns: ColumnDef<Product>[] = [
       return (
         <Badge
           variant="outline"
-          className={`${label === "Em estoque" ? "gap-2 bg-[#EBFAF7] text-[#00A180]" : "gap-2"}`}
+          className={`${label === "Em estoque" ? "gap-2 bg-[#EBFAF7] text-primary" : "gap-2"}`}
         >
           <CircleIcon
             size={12}
-            className={`${label === "Em estoque" ? "fill-[#00A180] fill-inherit" : "fill-inherit fill-slate-500 text-slate-500"}`}
+            className={`${label === "Em estoque" ? "fill-inherit fill-primary-foreground text-primary" : "fill-inherit fill-slate-500 text-slate-500"}`}
           />
           <span className={`${label !== "Em estoque" ? "text-slate-500" : ""}`}>
             {" "}

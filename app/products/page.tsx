@@ -1,8 +1,7 @@
-import { Button } from "@/app/_components/ui/button";
-import { PlusIcon } from "lucide-react";
 import { DataTable } from "../_components/ui/data-table";
 import { productsTableColumns } from "./_components/tableColumns";
 import { getProducts } from "../_data-access/product/getProducts";
+import AddProductButton from "./_components/addProductButton";
 
 // Força o comportamento SSR no Database Caching
 //export const dynamic = "force-dynamic";
@@ -35,10 +34,7 @@ const ProductsPage = async () => {
             </span>
             <h2 className="text-xl font-semibold">Gestão de Produtos</h2>
           </div>
-          <Button className="gap-2 bg-[#00A180]">
-            <PlusIcon size={20} />
-            Novo Produto
-          </Button>
+          <AddProductButton />
         </div>
         <DataTable
           columns={productsTableColumns}
