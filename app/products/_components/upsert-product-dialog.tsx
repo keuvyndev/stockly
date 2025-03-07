@@ -18,37 +18,41 @@ import {
   FormMessage,
 } from "@/app/_components/ui/form";
 import {
-  createProductSchema,
-  CreateProductSchema,
-} from "@/app/_actions/product/create-product/schema";
+  upsertProductSchema,
+  UpsertProductSchema,
+} from "@/app/_actions/product/upsert-product/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createProduct } from "@/app/_actions/product/create-product";
+import { upsertProduct } from "@/app/_actions/product/upsert-product";
 import { Input } from "@/app/_components/ui/input";
 import { NumericFormat } from "react-number-format";
 import { Button } from "@/app/_components/ui/button";
 import { Loader2Icon } from "lucide-react";
 
 interface UpsertProductDialogContentProps {
+  defaultValues?: UpsertProductSchema;
   onSuccess?: () => void;
 }
 
 const UpserProductDialogContent = ({
+  defaultValues,
   onSuccess,
 }: UpsertProductDialogContentProps) => {
-  const form = useForm<CreateProductSchema>({
+  const form = useForm<UpsertProductSchema>({
     shouldUnregister: true,
-    resolver: zodResolver(createProductSchema),
-    defaultValues: {
+    resolver: zodResolver(upsertProductSchema),
+    defaultValues: defaultValues ?? {
       name: "",
       price: 0.0,
       stock: 1,
     },
   });
 
+  const isEditting = !!defaultValues;
+
   // Função de submit do form
-  const onSubmit = async (data: CreateProductSchema) => {
+  const onSubmit = async (data: UpsertProductSchema) => {
     try {
-      await createProduct(data);
+      await upsertProduct({ ...data, id: defaultValues?.id });
       onSuccess?.();
     } catch (error) {
       console.error(error);
@@ -58,7 +62,9 @@ const UpserProductDialogContent = ({
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle className="font-semibold">Cadastrar Produto</DialogTitle>
+        <DialogTitle className="font-semibold">
+          {isEditting ? "Editar" : "Cadastrar"} Produto
+        </DialogTitle>
         <DialogDescription>Insira as informações abaixo</DialogDescription>
       </DialogHeader>
       <Form {...form}>
