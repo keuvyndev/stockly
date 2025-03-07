@@ -1,7 +1,7 @@
 import { DataTable } from "../_components/ui/data-table";
 import { productsTableColumns } from "./_components/tableColumns";
 import { getProducts } from "../_data-access/product/getProducts";
-import AddProductButton from "./_components/addProductButton";
+import AddProductButton from "./_components/create-product-button";
 
 // Força o comportamento SSR no Database Caching
 //export const dynamic = "force-dynamic";
