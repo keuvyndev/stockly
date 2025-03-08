@@ -84,6 +84,7 @@
   - export const revalidate = 10
 - Server Actions: São funções assíncronas que são executadas no servidor. Podem ser chamados em client e server components para lhe dar com envio de formulários e mutação de dados.
   - As rotinas devem ser colocadas dentro de "\_actions"
+- Data Transactions & ACID: Garante segurança e confiabilidade nas transações sensíveis com o banco de dados.
 
 ## Tips
 
@@ -106,6 +107,7 @@
   - npx shadcn@2.0.6 add sheet
   - npx shadcn@2.0.6 add command popover
   - npm install react-number-format@5.4.2
+  - npm install next-safe-action@7.9.3
 
 - server-only (Resolve o problema de server actions não serem executadas em clienct components)
 
