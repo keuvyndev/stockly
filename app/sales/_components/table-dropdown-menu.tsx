@@ -42,12 +42,6 @@ const SalesTableDropdownMenu = ({
           >
             <ClipboardCopyIcon size={16} /> Copiar ID
           </DropdownMenuItem>
-          <DialogTrigger asChild>
-            <DropdownMenuItem className="gap-1.5">
-              <EditIcon size={16} />
-              Editar
-            </DropdownMenuItem>
-          </DialogTrigger>
           <DropdownMenuItem onClick={() => onDelete(product.id)}>
             <TrashIcon size={16} /> Deletar
           </DropdownMenuItem>
