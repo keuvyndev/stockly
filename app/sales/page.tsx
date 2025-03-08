@@ -28,7 +28,10 @@ const SalesPage = async () => {
                 Adicionar Venda
               </Button>
             </SheetTrigger>
-            <UpsertSheetContent productOptions={productOptions} />
+            <UpsertSheetContent
+              products={products}
+              productOptions={productOptions}
+            />
           </Sheet>
         </div>
         {/* TABELA */}
