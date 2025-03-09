@@ -8,12 +8,12 @@ import { ComboboxOption } from "@/app/_components/ui/combobox";
 import { Product } from "@prisma/client";
 import { useState } from "react";
 
-interface CreateSaleButtonProps {
+interface UpsertSaleButtonProps {
   products: Product[];
   productOptions: ComboboxOption[];
 }
 
-const CreateSaleButton = (props: CreateSaleButtonProps) => {
+const UpsertSaleButton = (props: UpsertSaleButtonProps) => {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
   return (
@@ -29,4 +29,4 @@ const CreateSaleButton = (props: CreateSaleButtonProps) => {
   );
 };
 
-export default CreateSaleButton;
+export default UpsertSaleButton;
