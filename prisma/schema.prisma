@@ -24,11 +24,11 @@ model Product {
 }
 
 model Sale {
-  id        String        @id @default(uuid())
-  date      DateTime
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
-  products  SaleProduct[]
+  id           String        @id @default(uuid())
+  date         DateTime
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  saleProducts SaleProduct[]
 }
 
 model SaleProduct {

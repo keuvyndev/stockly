@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import DeleteProductDialogContent from "./delete-dialog-content";
 import { Dialog, DialogTrigger } from "@/app/_components/ui/dialog";
-import UpserProductDialogContent from "./upsert-product-dialog";
+import UpserProductDialogContent from "./upsert-dialog-content";
 import { Button } from "@/app/_components/ui/button";
 import { useState } from "react";
 import { Product } from "@prisma/client";
