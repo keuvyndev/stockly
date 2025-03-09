@@ -1,5 +1,4 @@
 import { Button } from "@/app/_components/ui/button";
-import { DialogTrigger } from "@/app/_components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,22 +8,17 @@ import {
   DropdownMenuTrigger,
 } from "@/app/_components/ui/dropdown-menu";
 import { Product } from "@prisma/client";
-import {
-  ClipboardCopyIcon,
-  EditIcon,
-  MoreHorizontalIcon,
-  TrashIcon,
-} from "lucide-react";
+import { ClipboardCopyIcon, MoreHorizontalIcon, TrashIcon } from "lucide-react";
 
-interface SalesTableDropdownMenuProps {
+interface UpsertSaleTableDropdownMenuProps {
   product: Pick<Product, "id">;
   onDelete: (productId: string) => void;
 }
 
-const SalesTableDropdownMenu = ({
+const UpsertSaleTableDropdownMenu = ({
   product,
   onDelete,
-}: SalesTableDropdownMenuProps) => {
+}: UpsertSaleTableDropdownMenuProps) => {
   return (
     <>
       <DropdownMenu>
@@ -51,4 +45,4 @@ const SalesTableDropdownMenu = ({
   );
 };
 
-export default SalesTableDropdownMenu;
+export default UpsertSaleTableDropdownMenu;
