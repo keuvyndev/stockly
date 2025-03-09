@@ -3,7 +3,7 @@
 import { Badge } from "@/app/_components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { CircleIcon } from "lucide-react";
-import ProductsTableDropdownMenu from "./table-dropwdown-menu";
+import ProductsTableDropdownMenu from "./table-dropdown-menu";
 import { ProductDto } from "@/app/_data-access/product/getProducts";
 
 const getStatusLabel = (status: string) => {
