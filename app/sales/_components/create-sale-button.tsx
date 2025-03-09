@@ -2,7 +2,7 @@
 
 import { Button } from "@/app/_components/ui/button";
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet";
-import { PlusCircle } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import UpsertSheetContent from "./upsert-sheet-content";
 import { ComboboxOption } from "@/app/_components/ui/combobox";
 import { Product } from "@prisma/client";
@@ -20,7 +20,7 @@ const UpsertSaleButton = (props: UpsertSaleButtonProps) => {
     <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
       <SheetTrigger asChild>
         <Button variant={"primary"} className="gap-2">
-          <PlusCircle size={20} />
+          <PlusIcon size={20} />
           Adicionar Venda
         </Button>
       </SheetTrigger>

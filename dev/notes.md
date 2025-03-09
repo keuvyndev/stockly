@@ -85,6 +85,7 @@
 - Server Actions: São funções assíncronas que são executadas no servidor. Podem ser chamados em client e server components para lhe dar com envio de formulários e mutação de dados.
   - As rotinas devem ser colocadas dentro de "\_actions"
 - Data Transactions & ACID: Garante segurança e confiabilidade nas transações sensíveis com o banco de dados.
+- Composition Pattern: Aprendi a modularizar meus componentes seguinto o modelo de composition pattern.
 
 ## Tips
 
