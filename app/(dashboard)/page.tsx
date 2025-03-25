@@ -53,7 +53,7 @@ const Home = async () => {
               <CircleDollarSignIcon />
             </SummaryCardIcon>
             <SummaryCardTitle>Vendas Totais</SummaryCardTitle>
-            <SummaryCardValue>{formatCurrency(totalSales)}</SummaryCardValue>
+            <SummaryCardValue>{totalSales}</SummaryCardValue>
           </SummaryCard>
 
           <SummaryCard>
