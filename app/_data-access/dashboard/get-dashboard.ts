@@ -10,24 +10,29 @@ interface DashboardDto {
 
 export const getDashboard = async (): Promise<DashboardDto> => {
   // Retorna o somátorio do valor de todas as vendas.
-  const totalRevenuePromise = db.saleProduct.aggregate({
-    _sum: {
-      unitPrice: true,
-    },
-  });
+  const totalRevenueQuery = `
+    SELECT SUM("unitPrice" * "quantity") as "totalRevenue"
+    FROM "SaleProduct";
+  `;
 
   // Retorna o somátorio do valor de todas as vendas que sejam de hoje, e estejam entre 00h e 23h59.
-  const todayRevenuePromise = db.saleProduct.aggregate({
-    _sum: {
-      unitPrice: true,
-    },
-    where: {
-      createdAt: {
-        gte: new Date(new Date().setHours(0, 0, 0, 0)),
-        lte: new Date(new Date().setHours(23, 59, 59, 999)),
-      },
-    },
-  });
+  const todayRevenueQuery = `
+    SELECT SUM("unitPrice" * "quantity") as "todayRevenue"
+    FROM "SaleProduct"
+    WHERE "createdAt" >= $1 AND "createdAt" <= $2;
+  `;
+
+  const startOfDay = new Date(new Date().setHours(0, 0, 0, 0));
+  const endOfDay = new Date(new Date().setHours(23, 59, 59, 999));
+
+  // Executa as querys SQL
+  const totalRevenuePromise =
+    db.$queryRawUnsafe<{ totalRevenue: number }[]>(totalRevenueQuery);
+  const todayRevenuePromise = db.$queryRawUnsafe<{ todayRevenue: number }[]>(
+    todayRevenueQuery,
+    startOfDay,
+    endOfDay,
+  );
 
   // Retorna a quantidade total de vendas realizadas.
   const totalSalesPromise = db.sale.count();
@@ -52,8 +57,8 @@ export const getDashboard = async (): Promise<DashboardDto> => {
     ]);
 
   return {
-    totalRevenue: Number(totalRevenue._sum.unitPrice),
-    todayRevenue: Number(totalRevenue._sum.unitPrice),
+    totalRevenue: totalRevenue[0].totalRevenue,
+    todayRevenue: todayRevenue[0].todayRevenue,
     totalSales,
     totalStock: Number(totalStock._sum.stock),
     totalProducts,
