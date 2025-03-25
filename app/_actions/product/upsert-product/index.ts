@@ -13,5 +13,6 @@ export const upsertProduct = actionClient
       update: data,
       create: data,
     });
-    revalidatePath("/products");
+    revalidatePath("/products", "page");
+    revalidatePath("/");
   });
