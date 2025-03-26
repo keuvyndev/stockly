@@ -107,12 +107,15 @@
   - npx shadcn@2.0.6 add sonner
   - npx shadcn@2.0.6 add sheet
   - npx shadcn@2.0.6 add command popover
+  - npx shadcn@2.0.6 add chart
   - npm install react-number-format@5.4.2
   - npm install next-safe-action@7.9.3
 
 - server-only (Resolve o problema de server actions não serem executadas em clienct components)
 
   - npm install server-only@0.0.1
+
+- npm i dayjs@1.11.3 (Usado para formatar datas, mais leve que date-fns)
 
 - ## Docker
 - ## Postgres

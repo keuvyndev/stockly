@@ -1,4 +1,7 @@
+import "server-only";
+
 import { db } from "@/app/_lib/prisma";
+import dayjs from "dayjs";
 
 interface DashboardDto {
   totalRevenue: number;
@@ -6,9 +9,43 @@ interface DashboardDto {
   totalSales: number;
   totalStock: number;
   totalProducts: number;
+  totalLast14DaysRevenue: DayTotalRevenue[];
+}
+
+export interface DayTotalRevenue {
+  day: string;
+  totalRevenue: number;
 }
 
 export const getDashboard = async (): Promise<DashboardDto> => {
+  // Captura o dia atual
+  const today = dayjs().endOf("day").toDate();
+
+  // Cria um array com os últimos 14 dias
+  const last14Days = [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map(
+    (day) => {
+      return dayjs(today).subtract(day, "day");
+    },
+  );
+
+  const totalLast14DaysRevenue: DayTotalRevenue[] = [];
+
+  for (const day of last14Days) {
+    const dayTotalRevenue = await db.$queryRawUnsafe<
+      { totalRevenue: number }[]
+    >(
+      `SELECT SUM("unitPrice" * "quantity") as "totalRevenue"
+      FROM "SaleProduct"
+      WHERE "createdAt" >= $1 AND "createdAt" <= $2;`,
+      day.startOf("day").toDate(),
+      day.endOf("day").toDate(),
+    );
+    totalLast14DaysRevenue.push({
+      day: day.format("DD/MM"),
+      totalRevenue: dayTotalRevenue[0].totalRevenue,
+    });
+  }
+
   // Retorna o somátorio do valor de todas as vendas.
   const totalRevenueQuery = `
     SELECT SUM("unitPrice" * "quantity") as "totalRevenue"
@@ -62,5 +99,6 @@ export const getDashboard = async (): Promise<DashboardDto> => {
     totalSales,
     totalStock: Number(totalStock._sum.stock),
     totalProducts,
+    totalLast14DaysRevenue,
   };
 };
