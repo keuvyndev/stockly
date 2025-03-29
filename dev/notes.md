@@ -86,6 +86,7 @@
   - As rotinas devem ser colocadas dentro de "\_actions"
 - Data Transactions & ACID: Garante segurança e confiabilidade nas transações sensíveis com o banco de dados.
 - Composition Pattern: Aprendi a modularizar meus componentes seguinto o modelo de composition pattern.
+- Uso de Suspense e Stream para otimização de busca de dados.
 
 ## Tips
 
@@ -108,6 +109,7 @@
   - npx shadcn@2.0.6 add sheet
   - npx shadcn@2.0.6 add command popover
   - npx shadcn@2.0.6 add chart
+  - npx shadcn@2.0.6 add skeleton
   - npm install react-number-format@5.4.2
   - npm install next-safe-action@7.9.3
 
