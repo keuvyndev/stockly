@@ -17,6 +17,7 @@ import SummaryCard, {
 import { getDashboard } from "../_data-access/dashboard/get-dashboard";
 import { formatCurrency } from "../_helpers/formatCurrency";
 import RevenueChart from "./_components/revenue-chart";
+import MostSoldProductItem from "./_components/most_sold-product";
 
 const Home = async () => {
   const {
@@ -26,6 +27,7 @@ const Home = async () => {
     totalStock,
     totalProducts,
     totalLast14DaysRevenue,
+    mostSoldProducts,
   } = await getDashboard();
   return (
     <>
@@ -79,10 +81,28 @@ const Home = async () => {
             <SummaryCardValue>{totalProducts}</SummaryCardValue>
           </SummaryCard>
         </div>
-        <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white p-6">
-          <p className="text-lg font-semibold text-slate-900">Receita Total</p>
-          <p className="text-sm text-slate-400">Últimos 14 dias</p>
-          <RevenueChart data={totalLast14DaysRevenue} />
+        <div className="grid min-h-0 grid-cols-[minmax(0,2.5fr),minmax(0,1fr)] gap-6">
+          <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white p-6">
+            <p className="text-lg font-semibold text-slate-900">
+              Receita Total
+            </p>
+            <p className="text-sm text-slate-400">Últimos 14 dias</p>
+            <RevenueChart data={totalLast14DaysRevenue} />
+          </div>
+          <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white">
+            <p className="p-6 text-lg font-semibold text-slate-900">
+              Produtos mais vendidos
+            </p>
+
+            <div className="space-y-7 overflow-y-auto px-6 pb-6">
+              {mostSoldProducts.map((product) => (
+                <MostSoldProductItem
+                  key={product.productId}
+                  product={product}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
