@@ -13,6 +13,8 @@ import TodayRevenueCard from "./_components/today-revenue";
 import TotalSalesCard from "./_components/total-sales-card";
 import TotalInStockCard from "./_components/total-in-stock-card";
 import TotalProducts from "./_components/total-products";
+import Last14DaysRevenueCard from "./_components/last-14-days-revenue-card";
+import { Skeleton } from "../_components/ui/skeleton";
 
 const Home = async () => {
   const { totalLast14DaysRevenue, mostSoldProducts } = await getDashboard();
@@ -49,13 +51,18 @@ const Home = async () => {
           </Suspense>
         </div>
         <div className="grid min-h-0 grid-cols-[minmax(0,2.5fr),minmax(0,1fr)] gap-6">
-          <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white p-6">
-            <p className="text-lg font-semibold text-slate-900">
-              Receita Total
-            </p>
-            <p className="text-sm text-slate-400">Últimos 14 dias</p>
-            <RevenueChart data={totalLast14DaysRevenue} />
-          </div>
+          <Suspense
+            fallback={
+              <Skeleton className="bg-white">
+                <div className="space-y-2 p-6">
+                  <Skeleton className="h-5 w-[86.26px]" />
+                  <Skeleton className="h-4 w-48" />
+                </div>
+              </Skeleton>
+            }
+          >
+            <Last14DaysRevenueCard />
+          </Suspense>
           <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white">
             <p className="p-6 text-lg font-semibold text-slate-900">
               Produtos mais vendidos
