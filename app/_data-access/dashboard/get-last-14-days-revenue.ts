@@ -8,6 +8,9 @@ export interface DayTotalRevenueDto {
 }
 
 export const getLast14DaysRevenue = async (): Promise<DayTotalRevenueDto[]> => {
+  // Para testes de Skeleton
+  //await new Promise((resolve) => setTimeout(resolve, 5000));
+
   // Captura o dia atual
   const today = dayjs().endOf("day").toDate();
 

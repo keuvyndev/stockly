@@ -3,6 +3,9 @@ import "server-only";
 import { db } from "@/app/_lib/prisma";
 
 export const getTodayRevenue = async (): Promise<number> => {
+  // Para testes de Skeleton
+  //await new Promise((resolve) => setTimeout(resolve, 5000));
+
   // Retorna o somátorio do valor de todas as vendas que sejam de hoje, e estejam entre 00h e 23h59.
   const todayRevenueQuery = `
   SELECT SUM("SaleProduct"."unitPrice" * "SaleProduct"."quantity") as "todayRevenue"
