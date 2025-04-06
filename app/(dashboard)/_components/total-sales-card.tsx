@@ -13,7 +13,7 @@ const TotalSalesCard = async () => {
       <SummaryCardIcon>
         <CircleDollarSignIcon />
       </SummaryCardIcon>
-      <SummaryCardTitle>Vendas Totais</SummaryCardTitle>
+      <SummaryCardTitle>Vendas totais</SummaryCardTitle>
       <SummaryCardValue>{totalSales}</SummaryCardValue>
     </SummaryCard>
   );

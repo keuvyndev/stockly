@@ -13,7 +13,7 @@ const TotalInStockCard = async () => {
       <SummaryCardIcon>
         <PackageIcon />
       </SummaryCardIcon>
-      <SummaryCardTitle>Total em Estoque</SummaryCardTitle>
+      <SummaryCardTitle>Total em estoque</SummaryCardTitle>
       <SummaryCardValue>{totalInStock}</SummaryCardValue>
     </SummaryCard>
   );

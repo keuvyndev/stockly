@@ -14,7 +14,7 @@ const TotalRevenueCard = async () => {
       <SummaryCardIcon>
         <DollarSign />
       </SummaryCardIcon>
-      <SummaryCardTitle>Receita Total</SummaryCardTitle>
+      <SummaryCardTitle>Receita total</SummaryCardTitle>
       <SummaryCardValue>{formatCurrency(totalRevenue)}</SummaryCardValue>
     </SummaryCard>
   );
