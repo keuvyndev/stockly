@@ -182,7 +182,7 @@ const UpsertSheetContent = ({
   return (
     <SheetContent className="!max-w-[700px]">
       <SheetHeader>
-        <SheetTitle>Adicionar Venda</SheetTitle>s
+        <SheetTitle>Adicionar Venda</SheetTitle>
         <SheetDescription>
           Insira as informações da venda abaixo.
         </SheetDescription>
