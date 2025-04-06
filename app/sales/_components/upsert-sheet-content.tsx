@@ -30,7 +30,7 @@ import {
 } from "@/app/_components/ui/table";
 import { formatCurrency } from "@/app/_helpers/formatCurrency";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { upsertSale } from "@/app/_actions/sale/upsert-sale";
@@ -58,6 +58,7 @@ interface SelectedProduct {
 }
 
 interface UpsertSheetContentProps {
+  isOpen: boolean;
   saleId?: string;
   products: ProductDto[];
   productOptions: ComboboxOption[];
@@ -66,6 +67,7 @@ interface UpsertSheetContentProps {
 }
 
 const UpsertSheetContent = ({
+  isOpen,
   saleId,
   productOptions,
   products,
@@ -163,6 +165,19 @@ const UpsertSheetContent = ({
       })),
     });
   };
+
+  // Ao fechar o menu lateral, limpa a lista de produtos
+  useEffect(() => {
+    if (!isOpen) {
+      form.reset();
+      setSelectedProducts([]);
+    }
+  }, [form, isOpen]);
+
+  // Faz com que a função de edição funcione
+  useEffect(() => {
+    setSelectedProducts(defaultSelectedProduct ?? []);
+  }, [defaultSelectedProduct]);
 
   return (
     <SheetContent className="!max-w-[700px]">

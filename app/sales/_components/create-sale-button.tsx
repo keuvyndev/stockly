@@ -5,11 +5,11 @@ import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet";
 import { PlusIcon } from "lucide-react";
 import UpsertSheetContent from "./upsert-sheet-content";
 import { ComboboxOption } from "@/app/_components/ui/combobox";
-import { Product } from "@prisma/client";
 import { useState } from "react";
+import { ProductDto } from "@/app/_data-access/product/getProducts";
 
 interface UpsertSaleButtonProps {
-  products: Product[];
+  products: ProductDto[];
   productOptions: ComboboxOption[];
 }
 
@@ -24,7 +24,11 @@ const UpsertSaleButton = (props: UpsertSaleButtonProps) => {
           Adicionar Venda
         </Button>
       </SheetTrigger>
-      <UpsertSheetContent setSheetIsOpen={setSheetIsOpen} {...props} />
+      <UpsertSheetContent
+        isOpen={sheetIsOpen}
+        setSheetIsOpen={setSheetIsOpen}
+        {...props}
+      />
     </Sheet>
   );
 };
