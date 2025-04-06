@@ -40,7 +40,7 @@ const ProductsTableDropdownMenu = ({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost">
-              <MoreHorizontalIcon size={16} />
+              <MoreHorizontalIcon size={16} className="text-primary" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
