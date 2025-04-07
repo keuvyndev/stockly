@@ -8,6 +8,11 @@ import Header, {
   HeaderSubtitle,
   HeaderTitle,
 } from "../_components/header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "STOCKLY - Products",
+};
 
 // Força o comportamento SSR no Database Caching
 //export const dynamic = "force-dynamic";

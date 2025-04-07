@@ -10,6 +10,11 @@ import Header, {
   HeaderSubtitle,
   HeaderTitle,
 } from "../_components/header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "STOCKLY - Sales",
+};
 
 const SalesPage = async () => {
   const sales = await getSales();
