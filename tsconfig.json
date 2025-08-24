@@ -28,5 +28,5 @@
     ".next/types/**/*.ts",
     "app/API/products/[id]/route.ts.bak"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","sst.config.ts"]
 }

@@ -37,3 +37,10 @@ next-env.d.ts
 
 .env
 \.postgres_data
+
+# sst
+.sst
+
+
+# open-next
+.open-next

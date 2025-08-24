@@ -112,6 +112,20 @@
   - npx shadcn@2.0.6 add skeleton
   - npm install react-number-format@5.4.2
   - npm install next-safe-action@7.9.3
+  - npx sst@3.1.49 (To uplobad to AWS)
+    - npm install sst (CLI)
+    - Para Windows (1º Opção):
+      - npm install sst-win32-x64@3.1.49 --save-dev
+      - npm install sst@3.1.49 --save-dev
+      - npx sst init
+    - Para Windows (2º Opção):
+      - No cmd (Instala o wsl com ubuntu): wsl --install
+      - No terminal wsl (Instala o Node.js): sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      - No terminal wsl: source ~/.bashrc
+      - No terminal wsl: nvm install 18
+      - No terminal wsl: nvm use 18
+      - No terminal wsl: npx sst@3.1.49 init
+      - No terminal wsl: npm install
 
 - server-only (Resolve o problema de server actions não serem executadas em clienct components)
 
